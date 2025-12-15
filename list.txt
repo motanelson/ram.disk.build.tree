@@ -1,0 +1,1 @@
+bin,usr,usr/bin,tmp,var
