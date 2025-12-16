@@ -11,9 +11,14 @@ def copys(s1:str,s2:str):
     f2.close()
 print("\033c\033[40;37m\ngive me a list file to create tree ? ")
 i=input()
+i=i.strip()
 f1=open(i,"r")
 ff=f1.read()
 f1.close()
+print("\033[40;37m\ngive me a binary file to start up ? ")
+ii=input()
+ii=ii.strip()
+
 fff=ff.split(",")
 os.mkdir(paths)
 for f in fff:
@@ -24,3 +29,6 @@ for f in fff:
         os.chmod(paths+ff,0o777)
     else:
         os.mkdir(paths+f)
+ss="genisoimage -o disk.iso -input-charset utf-8 -b $1 -no-emul-boot -boot-load-size 4  -boot-info-table $2 ".replace("$2",paths).replace("$1",ii)
+print(ss)
+os.system(ss)
