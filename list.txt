@@ -1,1 +1,1 @@
-bin,!bin/ls,!bin/sh,usr,usr/bin,!usr/bin/ls,!usr/bin/sh,tmp,var,lib,lib/lib32,lib/lib64,lib64,lib32
+bin,!bin/ls,!bin/sh,usr,usr/bin,!usr/bin/ls,!usr/bin/sh,tmp,var,lib,lib/lib32,lib/lib64,lib64,lib32,dev,mnt

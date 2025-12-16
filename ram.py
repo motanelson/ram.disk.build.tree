@@ -31,7 +31,14 @@ def ppath(spath,rpath):
         if n!="":
             sss=n.split("(")
             if sss[0].find("=>")<0:
-                print(sss[0].strip())
+                if sss[0].find("/")>-1:
+                    nnn=sss[0].strip()
+                    
+                    dirs(spath+nnn)
+                    copys(rpath+nnn,spath+nnn)
+                else:
+                    nnn=sss[0].strip()
+                    print(nnn)
             else:
                 nn=sss[0].split("=>")
                 nnn=nn[1].strip()
