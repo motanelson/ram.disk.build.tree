@@ -1,1 +1,1 @@
-bin,usr,usr/bin,tmp,var
+bin,!bin/ls,!bin/sh,usr,usr/bin,!usr/bin/ls,!usr/bin/sh,tmp,var
