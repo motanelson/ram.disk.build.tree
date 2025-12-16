@@ -1,16 +1,26 @@
 import os
 import shutil
-paths=".//root//"
+paths="./root/"
 r="/"
 def copys(s1:str,s2:str):
     s=b""
-    f1=open(s1,"rb")
-    f2=open(s2,"wb")
-    s=f1.read()
-    f2.write(s)
-    f1.close()
-    f2.close()
-def ppath():
+    try:
+        f1=open(s1,"rb")
+        f2=open(s2,"wb")
+        s=f1.read()
+        f2.write(s)
+        f1.close()
+        f2.close()
+    except:
+        print("file error: "+s1)
+def dirs(f):
+    ff=f.replace("//","/")
+    d=ff.split("/")
+    aa=d[:len(d)-1]
+    a="/".join(aa)
+    os.makedirs(a,0o777,True)
+   
+def ppath(spath,rpath):
     print("------------------------------")
     f1=open("/tmp/out.txt","r")
     s=f1.read()
@@ -21,12 +31,12 @@ def ppath():
         if n!="":
             sss=n.split("(")
             if sss[0].find("=>")<0:
-                print(sss[0])
+                print(sss[0].strip())
             else:
                 nn=sss[0].split("=>")
-                nnn=nn[1]
-                print(nnn)
-
+                nnn=nn[1].strip()
+                dirs(spath+nnn)
+                copys(rpath+nnn,spath+nnn)
 print("\033c\033[40;37m\ngive me a list file to create tree ? ")
 i=input()
 i=i.strip()
@@ -46,7 +56,7 @@ for f in fff:
         copys(r+ff,paths+ff)
         os.chmod(paths+ff,0o777)
         os.system("ldd $1 > /tmp/out.txt".replace("$1",paths+ff))
-        ppath()
+        ppath(paths,r)
     else:
         os.makedirs(paths+f,0o777,True)
 ss="genisoimage -o disk.iso -input-charset utf-8 -b $1 -no-emul-boot -boot-load-size 4  -boot-info-table $2 ".replace("$2",paths).replace("$1",ii)
