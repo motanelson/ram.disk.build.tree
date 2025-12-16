@@ -21,5 +21,6 @@ for f in fff:
     if f[0:1]=="!":
         ff=f[1:]
         copys(r+ff,paths+ff)
+        os.chmod(paths+ff,0o777)
     else:
         os.mkdir(paths+f)
