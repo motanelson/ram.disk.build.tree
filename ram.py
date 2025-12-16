@@ -39,6 +39,7 @@ def ppath(spath,rpath):
                 else:
                     nnn=sss[0].strip()
                     print(nnn)
+                    
             else:
                 nn=sss[0].split("=>")
                 nnn=nn[1].strip()
