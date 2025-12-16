@@ -38,7 +38,7 @@ ii=input()
 ii=ii.strip()
 
 fff=ff.split(",")
-os.mkdir(paths)
+os.makedirs(paths,0o777,True)
 for f in fff:
     f=f.strip()
     if f[0:1]=="!":
@@ -48,7 +48,7 @@ for f in fff:
         os.system("ldd $1 > /tmp/out.txt".replace("$1",paths+ff))
         ppath()
     else:
-        os.mkdir(paths+f)
+        os.makedirs(paths+f,0o777,True)
 ss="genisoimage -o disk.iso -input-charset utf-8 -b $1 -no-emul-boot -boot-load-size 4  -boot-info-table $2 ".replace("$2",paths).replace("$1",ii)
 print(ss)
 os.system(ss)
